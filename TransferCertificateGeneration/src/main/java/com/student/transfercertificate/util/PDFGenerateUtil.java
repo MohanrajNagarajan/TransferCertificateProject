@@ -2,7 +2,9 @@ package com.student.transfercertificate.util;
 
 import java.io.File; 
 import java.io.IOException;
-  
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.apache.pdfbox.pdmodel.PDDocument; 
 import org.apache.pdfbox.pdmodel.PDPage; 
 import org.apache.pdfbox.pdmodel.PDPageContentStream; 
@@ -36,7 +38,7 @@ public class PDFGenerateUtil {
 		      contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
 
 		      //Setting the position for the line 
-		      contentStream.newLineAtOffset(100, 100);
+		      contentStream.newLineAtOffset(145, 549);
 
 		      String text = transferCertificate.getSerialNo()+"";
 
@@ -49,6 +51,26 @@ public class PDFGenerateUtil {
 
 		      System.out.println("first Content added");
 		      
+		      //Begin the Content stream 
+		      contentStream.beginText(); 
+		       
+		      //Setting the font to the Content stream  
+		      contentStream.setFont(PDType1Font.TIMES_ROMAN, 12);
+
+		      //Setting the position for the line 
+		      contentStream.newLineAtOffset(490, 549);
+
+		       Date date = new Date();
+		       SimpleDateFormat simple = new SimpleDateFormat("dd-MM-yyyy");
+		       text = simple.format(date);
+		      //Adding text in the form of string 
+		      contentStream.showText(text);   
+		           
+
+		      //Ending the content stream
+		      contentStream.endText();
+
+		      System.out.println("first Content added");
 		      
 		      //Begin the Content stream 
 		      contentStream.beginText(); 
